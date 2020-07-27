@@ -17,7 +17,7 @@ module.exports = {
   AMG: `Caleb`,
   DTT: `Tommy`,
   PAP: `Jonny`,
-  CLI: `Zack`,
+  CLI: `Zach`,
   SZO: `WillE`,
   FRI: `Ned`
 }
