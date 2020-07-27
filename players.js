@@ -1,0 +1,23 @@
+module.exports = {
+  BRE: `SamB`,
+  HSA: `Alasdair`,
+  GOS: `Larry`,
+  RIG: `Callum`,
+  FLA: `Kingsley`,
+  NEV: `Olly`,
+  ROT: `SamF`,
+  MAN: `Kevin`,
+  GNV: `Anton`,
+  AUG: `Ben`,
+  STE: `Nick`,
+  TNT: `Harry`,
+  NAV: `Robbie`,
+  LUC: `Sebastian`,
+  LIE: `Denis`,
+  AMG: `Caleb`,
+  DTT: `Tommy`,
+  PAP: `Jonny`,
+  CLI: `Zack`,
+  SZO: `WillE`,
+  FRI: `Ned`
+}

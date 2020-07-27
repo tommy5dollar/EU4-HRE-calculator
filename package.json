@@ -1,0 +1,14 @@
+{
+  "name": "EU4-HRE-calculator",
+  "repository": "https://github.com/tommy5dollar/EU4-HRE-calculator.git",
+  "author": "Tommy Long <tommy5dollar@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "extract-zip": "^2.0.1",
+    "fs-extra": "^9.0.1",
+    "jomini": "^0.2.12"
+  },
+  "scripts": {
+    "scores": "node index"
+  }
+}
