@@ -5,7 +5,7 @@ const jomini = require(`jomini`)
 const players = require(`./players`)
 
 const processScores = async () => {
-  const saveZipFile = fs.readdirSync(`./`).filter(name => name.endsWith(`.zip`)).find(() => true)
+  const saveZipFile = fs.readdirSync(`./`).filter(name => name.endsWith(`.eu4`)).find(() => true)
 
   if (!saveZipFile) throw new Error(`No zip file found. Please place save zip file in project root`)
 
@@ -14,10 +14,19 @@ const processScores = async () => {
   const gamestateString = fs.readFileSync(`./gamestate`).toString(`utf8`)
   const metaString = fs.readFileSync(`./meta`).toString(`utf8`)
 
-  const fixedGamestateString = gamestateString.split(`map_area_data{`).join(`map_area_data={`) // what a bodge
+  const fixedGamestateString = gamestateString // what a set of bodges
+    .split(`map_area_data{`).join(`map_area_data={`)
+    .split(`
+{
+\t\t\t}`).join(``)
+    .split(`
+{STK\t\t\t}`).join(``)
+    .split(`
+{AKT\t\t\t}`).join(``)
 
-  const { provinces, diplomacy } = jomini.parse(fixedGamestateString)
   const { date: currentDate } = jomini.parse(metaString)
+  const gamestateParsed = jomini.parse(fixedGamestateString)
+  const { provinces, diplomacy } = gamestateParsed
 
   const playersNations = Object.entries(players).map(([playerTag, playerName]) => ({
     playerName,
@@ -25,12 +34,12 @@ const processScores = async () => {
     subjectTags: diplomacy.dependency.filter(({ first, start_date, end_date }) => first === playerTag && (!start_date || start_date <= currentDate) && (!end_date || end_date > currentDate)).map(({ second }) => second)
   }))
 
-  const hreProvinces = Object.values(provinces).filter(({ hre }) => !!hre)
+  const hreProvinces = Object.values(provinces).filter(({ hre }) => hre && !!hre)
 
   const scoreData = playersNations.map(({ playerName, nationTag, subjectTags }) => ({
     playerName,
     score: hreProvinces.filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
-      + (hreProvinces.filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0) / 2),
+      + hreProvinces.filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0),
     debug: {
       owned: hreProvinces.filter(({owner}) => owner === nationTag).map(({ name,  base_tax, base_production, base_manpower}) => ({name, base_tax, base_production, base_manpower })),
       subjects: hreProvinces.filter(({owner}) => subjectTags.includes(owner)).map(({ name,  base_tax, base_production, base_manpower}) => ({name, base_tax, base_production, base_manpower }))

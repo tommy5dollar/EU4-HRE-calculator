@@ -81,6 +81,7 @@ snapshot.pdf
 # EU4 files
 
 *.zip
+*.eu4
 
 gamestate
 ai
