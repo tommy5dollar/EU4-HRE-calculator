@@ -2,7 +2,7 @@ module.exports = {
   IRE: `SamB`,
   HSA: `Alasdair`,
   GOS: `Larry`,
-  RIG: `Callum`,
+  RUS: `Callum`,
   FLA: `Kingsley`,
   FRA: `Olly`,
   ROT: `SamF`,
@@ -14,10 +14,10 @@ module.exports = {
   NAV: `Robbie`,
   TUS: `Sebastian`,
   LIE: `Denis`,
-  AMG: `Caleb`,
+  POR: `Caleb`,
   DTT: `Tommy`,
   PAP: `Jonny`,
-  CLI: `Zach`,
+  HAB: `Zach`,
   SZO: `WillE`,
   FRI: `Ned`
 }
