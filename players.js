@@ -17,7 +17,7 @@ module.exports = {
   POR: `Caleb`,
   DTT: `Tommy`,
   // PAP: `Jonny`,
-  HAB: `Zach`,
+  // HAB: `Zach`,
   SZO: `WillE`,
   FRI: `Ned`
 }
