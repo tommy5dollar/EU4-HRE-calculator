@@ -3,6 +3,7 @@ const zip = require(`extract-zip`)
 const jomini = require(`jomini`)
 
 const players = require(`./players`)
+const euroProvinces = require(`./euroProvinces`)
 
 const processScores = async () => {
   const saveZipFile = fs.readdirSync(`./`).filter(name => name.endsWith(`.eu4`)).find(() => true)
@@ -34,21 +35,26 @@ const processScores = async () => {
     subjectTags: diplomacy.dependency.filter(({ first, start_date, end_date }) => first === playerTag && (!start_date || start_date <= currentDate) && (!end_date || end_date > currentDate)).map(({ second }) => second)
   }))
 
+  const euroProvinceData = Object.entries(provinces).filter(([ id ], i) => euroProvinces.includes(parseInt(id.split(`-`).join(``), 10))).map(([, province]) => province)
   const hreProvinces = Object.values(provinces).filter(({ hre }) => hre && !!hre)
 
   const scoreData = playersNations.map(({ playerName, nationTag, subjectTags }) => ({
     playerName,
     score: hreProvinces.filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
       + hreProvinces.filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0),
+    euroDev: euroProvinceData.filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
+      + euroProvinceData.filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0),
+    totalDev: Object.values(provinces).filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
+      + Object.values(provinces).filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0),
     debug: {
       owned: hreProvinces.filter(({owner}) => owner === nationTag).map(({ name,  base_tax, base_production, base_manpower}) => ({name, base_tax, base_production, base_manpower })),
       subjects: hreProvinces.filter(({owner}) => subjectTags.includes(owner)).map(({ name,  base_tax, base_production, base_manpower}) => ({name, base_tax, base_production, base_manpower }))
     }
   })).sort(({ score: scoreA }, { score: scoreB }) => scoreB >= scoreA ? 1 : -1)
 
-  return scoreData.reduce((acc, { playerName, score, debug }) => ({
+  return scoreData.reduce((acc, { playerName, score, euroDev, totalDev, debug }) => ({
     ...acc,
-    [playerName]: score
+    [playerName]: `${score} (${euroDev}/${totalDev})`
   }), {})
 }
 
