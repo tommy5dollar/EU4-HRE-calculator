@@ -3,7 +3,7 @@ module.exports = {
   HSA: `Alasdair`,
   GOS: `Larry`,
   RUS: `Callum`,
-  FLA: `Kingsley`,
+  BNG: `Kingsley`,
   FRA: `Olly`,
   ROT: `SamF`,
   MAN: `Kevin`,
@@ -11,13 +11,9 @@ module.exports = {
   SWA: `Ben`,
   PRU: `Nick`,
   TNT: `Harry`,
-  // NAV: `Robbie`,
   TUS: `Sebastian`,
-  LIE: `Denis`,
   POR: `Caleb`,
   DTT: `Tommy`,
-  // PAP: `Jonny`,
-  // HAB: `Zach`,
   SZO: `WillE`,
   FRI: `Ned`
 }
