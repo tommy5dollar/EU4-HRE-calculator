@@ -17,13 +17,13 @@ const processScores = async () => {
 
   const fixedGamestateString = gamestateString // what a set of bodges
     .split(`map_area_data{`).join(`map_area_data={`)
-    .split(`
-{
-\t\t\t}`).join(``)
-    .split(`
-{STK\t\t\t}`).join(``)
-    .split(`
-{AKT\t\t\t}`).join(``)
+//     .split(`
+// {
+// \t\t\t}`).join(``)
+//     .split(`
+// {STK\t\t\t}`).join(``)
+//     .split(`
+// {AKT\t\t\t}`).join(``)
 
   const { date: currentDate } = jomini.parse(metaString)
   const gamestateParsed = jomini.parse(fixedGamestateString)
