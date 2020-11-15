@@ -15,5 +15,5 @@ module.exports = {
   POR: `Caleb`,
   DTT: `Tommy`,
   SZO: `WillE`,
-  FRI: `Ned`
+  VRM: `Ned`
 }
