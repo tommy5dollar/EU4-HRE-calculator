@@ -4,7 +4,7 @@
     "skanderbegUrl": "https://skanderbeg.pm/browse.php?id=c9dfb4",
     "scoreData": [
       {
-        "playerName": "Adam (KNI)",
+        "playerName": "Adam",
         "tag": "KNI",
         "scorableDev": 62,
         "totalDev": 84,
@@ -58,7 +58,7 @@
         }
       },
       {
-        "playerName": "Cillian (CND)",
+        "playerName": "Cillian",
         "tag": "CND",
         "scorableDev": 32,
         "totalDev": 81,
@@ -88,7 +88,7 @@
         }
       },
       {
-        "playerName": "Sheb (TRE)",
+        "playerName": "Sheb",
         "tag": "TRE",
         "scorableDev": 29,
         "totalDev": 46,
@@ -125,7 +125,7 @@
         }
       },
       {
-        "playerName": "Will (MCH)",
+        "playerName": "Will",
         "tag": "MCH",
         "scorableDev": 0,
         "totalDev": 306,
@@ -136,7 +136,7 @@
         }
       },
       {
-        "playerName": "Kevin (INC)",
+        "playerName": "Kevin",
         "tag": "INC",
         "scorableDev": 0,
         "totalDev": 182,
@@ -147,7 +147,7 @@
         }
       },
       {
-        "playerName": "pilkman (BEN)",
+        "playerName": "pilkman",
         "tag": "BEN",
         "scorableDev": 0,
         "totalDev": 138,
@@ -158,7 +158,7 @@
         }
       },
       {
-        "playerName": "Schrodero (HSK)",
+        "playerName": "Schrodero",
         "tag": "HSK",
         "scorableDev": 0,
         "totalDev": 114,
@@ -169,7 +169,7 @@
         }
       },
       {
-        "playerName": "Piaggio (KAF)",
+        "playerName": "Piaggio",
         "tag": "KAF",
         "scorableDev": 0,
         "totalDev": 93.5,
@@ -180,7 +180,7 @@
         }
       },
       {
-        "playerName": "Nick (ALG)",
+        "playerName": "Nick",
         "tag": "ALG",
         "scorableDev": 0,
         "totalDev": 87,
@@ -191,7 +191,7 @@
         }
       },
       {
-        "playerName": "DanC (SRV)",
+        "playerName": "DanC",
         "tag": "SRV",
         "scorableDev": 0,
         "totalDev": 85,
@@ -202,7 +202,7 @@
         }
       },
       {
-        "playerName": "SamF (BTI)",
+        "playerName": "SamF",
         "tag": "BTI",
         "scorableDev": 0,
         "totalDev": 82,
@@ -213,7 +213,7 @@
         }
       },
       {
-        "playerName": "Harry (CTM)",
+        "playerName": "Harry",
         "tag": "CTM",
         "scorableDev": 0,
         "totalDev": 76,
@@ -224,7 +224,7 @@
         }
       },
       {
-        "playerName": "adjb (RAS)",
+        "playerName": "adjb",
         "tag": "RAS",
         "scorableDev": 0,
         "totalDev": 75,
@@ -235,7 +235,7 @@
         }
       },
       {
-        "playerName": "The Audacity of Cope (TMB)",
+        "playerName": "The Audacity of Cope",
         "tag": "TMB",
         "scorableDev": 0,
         "totalDev": 74,
@@ -246,7 +246,7 @@
         }
       },
       {
-        "playerName": "Lawrence (TRP)",
+        "playerName": "Lawrence",
         "tag": "TRP",
         "scorableDev": 0,
         "totalDev": 74,
@@ -257,7 +257,7 @@
         }
       },
       {
-        "playerName": "Ned (BEI)",
+        "playerName": "Ned",
         "tag": "BEI",
         "scorableDev": 0,
         "totalDev": 71,
@@ -268,7 +268,7 @@
         }
       },
       {
-        "playerName": "OliS (GDW)",
+        "playerName": "OliS",
         "tag": "GDW",
         "scorableDev": 0,
         "totalDev": 71,
@@ -279,7 +279,7 @@
         }
       },
       {
-        "playerName": "Solon (TAR)",
+        "playerName": "Solon",
         "tag": "TAR",
         "scorableDev": 0,
         "totalDev": 58,
@@ -290,7 +290,7 @@
         }
       },
       {
-        "playerName": "Callum (FEZ)",
+        "playerName": "Callum",
         "tag": "FEZ",
         "scorableDev": 0,
         "totalDev": 49,
@@ -301,7 +301,7 @@
         }
       },
       {
-        "playerName": "ybot22 (MRK)",
+        "playerName": "ybot22",
         "tag": "MRK",
         "scorableDev": 0,
         "totalDev": 44,
@@ -312,7 +312,7 @@
         }
       },
       {
-        "playerName": "Ben (DUL)",
+        "playerName": "Ben",
         "tag": "DUL",
         "scorableDev": 0,
         "totalDev": 41,
@@ -323,7 +323,7 @@
         }
       },
       {
-        "playerName": "Josh (SKA)",
+        "playerName": "Josh",
         "tag": "SKA",
         "scorableDev": 0,
         "totalDev": 36,
@@ -334,7 +334,7 @@
         }
       },
       {
-        "playerName": "Tommy (RTT)",
+        "playerName": "Tommy",
         "tag": "RTT",
         "scorableDev": 0,
         "totalDev": 36,
@@ -345,7 +345,7 @@
         }
       },
       {
-        "playerName": "Ian (CYP)",
+        "playerName": "Ian",
         "tag": "CYP",
         "scorableDev": 0,
         "totalDev": 30,
@@ -356,7 +356,7 @@
         }
       },
       {
-        "playerName": "Anton (MAS)",
+        "playerName": "Anton",
         "tag": "MAS",
         "scorableDev": 0,
         "totalDev": 26,
@@ -367,7 +367,7 @@
         }
       },
       {
-        "playerName": "OllyN (TGT)",
+        "playerName": "OllyN",
         "tag": "TGT",
         "scorableDev": 0,
         "totalDev": 13,
@@ -378,7 +378,7 @@
         }
       },
       {
-        "playerName": "Blazely (SOS)",
+        "playerName": "Blazely",
         "tag": "SOS",
         "scorableDev": 0,
         "totalDev": 5,
@@ -389,7 +389,7 @@
         }
       },
       {
-        "playerName": "[OGC] DrZoidberg (GEO)",
+        "playerName": "[OGC] DrZoidberg",
         "tag": "GEO",
         "scorableDev": 0,
         "totalDev": 0,
@@ -400,7 +400,7 @@
         }
       },
       {
-        "playerName": "SamB (NPL)",
+        "playerName": "SamB",
         "tag": "NPL",
         "scorableDev": 0,
         "totalDev": 0,
@@ -418,7 +418,7 @@
     "skanderbegUrl": "https://skanderbeg.pm/browse.php?id=932d7f",
     "scoreData": [
       {
-        "playerName": "Adam (KNI)",
+        "playerName": "Adam",
         "tag": "KNI",
         "scorableDev": 174,
         "totalDev": 218,
@@ -556,7 +556,7 @@
         }
       },
       {
-        "playerName": "Cillian (CND)",
+        "playerName": "Cillian",
         "tag": "CND",
         "scorableDev": 79,
         "totalDev": 253,
@@ -616,7 +616,7 @@
         }
       },
       {
-        "playerName": "Sheb (TRE)",
+        "playerName": "Sheb",
         "tag": "TRE",
         "scorableDev": 73,
         "totalDev": 91,
@@ -676,7 +676,7 @@
         }
       },
       {
-        "playerName": "Ian (CYP)",
+        "playerName": "Ian",
         "tag": "CYP",
         "scorableDev": 31,
         "totalDev": 111,
@@ -713,7 +713,7 @@
         }
       },
       {
-        "playerName": "Ben (DUL)",
+        "playerName": "Ben",
         "tag": "DUL",
         "scorableDev": 26,
         "totalDev": 113,
@@ -731,7 +731,7 @@
         }
       },
       {
-        "playerName": "Lawrence (TRP)",
+        "playerName": "Lawrence",
         "tag": "TRP",
         "scorableDev": 20,
         "totalDev": 103,
@@ -749,7 +749,7 @@
         }
       },
       {
-        "playerName": "OllyN (TGT)",
+        "playerName": "OllyN",
         "tag": "TGT",
         "scorableDev": 16,
         "totalDev": 93,
@@ -767,7 +767,7 @@
         }
       },
       {
-        "playerName": "Will (MCH)",
+        "playerName": "Will",
         "tag": "MCH",
         "scorableDev": 0,
         "totalDev": 784,
@@ -778,7 +778,7 @@
         }
       },
       {
-        "playerName": "Kevin (INC)",
+        "playerName": "Kevin",
         "tag": "INC",
         "scorableDev": 0,
         "totalDev": 354,
@@ -789,7 +789,7 @@
         }
       },
       {
-        "playerName": "Schrodero (HSK)",
+        "playerName": "Schrodero",
         "tag": "HSK",
         "scorableDev": 0,
         "totalDev": 283,
@@ -800,7 +800,7 @@
         }
       },
       {
-        "playerName": "pilkman (BEN)",
+        "playerName": "pilkman",
         "tag": "BEN",
         "scorableDev": 0,
         "totalDev": 240,
@@ -811,7 +811,7 @@
         }
       },
       {
-        "playerName": "Harry (CTM)",
+        "playerName": "Harry",
         "tag": "CTM",
         "scorableDev": 0,
         "totalDev": 178,
@@ -822,7 +822,7 @@
         }
       },
       {
-        "playerName": "SamF (BTI)",
+        "playerName": "SamF",
         "tag": "BTI",
         "scorableDev": 0,
         "totalDev": 162,
@@ -833,7 +833,7 @@
         }
       },
       {
-        "playerName": "OliS (GDW)",
+        "playerName": "OliS",
         "tag": "GDW",
         "scorableDev": 0,
         "totalDev": 161,
@@ -844,7 +844,7 @@
         }
       },
       {
-        "playerName": "Piaggio (KAF)",
+        "playerName": "Piaggio",
         "tag": "KAF",
         "scorableDev": 0,
         "totalDev": 152.5,
@@ -855,7 +855,7 @@
         }
       },
       {
-        "playerName": "SamB (NPL)",
+        "playerName": "SamB)",
         "tag": "NPL",
         "scorableDev": 0,
         "totalDev": 152,
@@ -866,7 +866,7 @@
         }
       },
       {
-        "playerName": "The Audacity of Cope (TMB)",
+        "playerName": "The Audacity of Cope",
         "tag": "TMB",
         "scorableDev": 0,
         "totalDev": 142,
@@ -877,7 +877,7 @@
         }
       },
       {
-        "playerName": "ybot22 (MRK)",
+        "playerName": "ybot22",
         "tag": "MRK",
         "scorableDev": 0,
         "totalDev": 138,
@@ -888,7 +888,7 @@
         }
       },
       {
-        "playerName": "adjb (RAS)",
+        "playerName": "adjb",
         "tag": "RAS",
         "scorableDev": 0,
         "totalDev": 133,
@@ -899,7 +899,7 @@
         }
       },
       {
-        "playerName": "Ned (BEI)",
+        "playerName": "Ned",
         "tag": "BEI",
         "scorableDev": 0,
         "totalDev": 123,
@@ -910,7 +910,7 @@
         }
       },
       {
-        "playerName": "Tommy (RTT)",
+        "playerName": "Tommy",
         "tag": "RTT",
         "scorableDev": 0,
         "totalDev": 95,
@@ -921,7 +921,7 @@
         }
       },
       {
-        "playerName": "Callum (FEZ)",
+        "playerName": "Callum",
         "tag": "FEZ",
         "scorableDev": 0,
         "totalDev": 89,
@@ -932,7 +932,7 @@
         }
       },
       {
-        "playerName": "Josh (SKA)",
+        "playerName": "Josh",
         "tag": "SKA",
         "scorableDev": 0,
         "totalDev": 86,
@@ -943,7 +943,7 @@
         }
       },
       {
-        "playerName": "Anton (MAS)",
+        "playerName": "Anton",
         "tag": "MAS",
         "scorableDev": 0,
         "totalDev": 79,
@@ -954,7 +954,7 @@
         }
       },
       {
-        "playerName": "Solon (TAR)",
+        "playerName": "Solon",
         "tag": "TAR",
         "scorableDev": 0,
         "totalDev": 71,
@@ -965,7 +965,7 @@
         }
       },
       {
-        "playerName": "Nick (ALG)",
+        "playerName": "Nick",
         "tag": "ALG",
         "scorableDev": 0,
         "totalDev": 29,
@@ -976,7 +976,7 @@
         }
       },
       {
-        "playerName": "DanC (SRV)",
+        "playerName": "DanC",
         "tag": "SRV",
         "scorableDev": 0,
         "totalDev": 19,
@@ -987,7 +987,7 @@
         }
       },
       {
-        "playerName": "[OGC] DrZoidberg (GEO)",
+        "playerName": "[OGC] DrZoidberg",
         "tag": "GEO",
         "scorableDev": 0,
         "totalDev": 0,
@@ -998,7 +998,7 @@
         }
       },
       {
-        "playerName": "Blazely (SOS)",
+        "playerName": "Blazely",
         "tag": "SOS",
         "scorableDev": 0,
         "totalDev": 0,

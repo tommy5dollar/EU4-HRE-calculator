@@ -80,7 +80,7 @@ const processScore = async (skanderbegId, sessionNumber) => {
   const { provinces, diplomacy } = gamestateParsed
 
   const playersNations = Object.entries(players).map(([playerTag, playerName]) => ({
-    playerName: `${playerName} (${playerTag})`,
+    playerName,
     nationTag: playerTag,
     subjectTags: diplomacy.dependency.filter(({ first, start_date, end_date }) => first === playerTag && (!start_date || start_date <= currentDate) && (!end_date || end_date > currentDate)).map(({ second }) => second)
   }))
