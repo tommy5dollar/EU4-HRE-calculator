@@ -10,7 +10,7 @@ module.exports = {
   INC: "Kevin",
   GDW: "OliS",
   TRP: "Lawrence",
-  FEZ: "Callum",
+  MOR: "Callum",
   JAP: "Schrodero",
   BEI: "Ned",
   BTI: "SamF",
@@ -20,12 +20,10 @@ module.exports = {
   MCH: "Will",
   KAF: "Piaggio",
   SKA: "Josh",
-  TAR: "Solon",
-  CTM: "Harry",
+  LXA: "Solon",
+  MAY: "Harry",
   TMB: "The Audacity of Cope",
   RAS: "adjb",
-  SOS: "Blazely",
   NPL: "SamB",
-  MRK: "ybot22",
-  GEO: "[OGC] DrZoidberg"
+  MRK: "ybot22"
 }
