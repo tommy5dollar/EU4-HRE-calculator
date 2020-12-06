@@ -4,6 +4,7 @@ module.exports = {
     1: `c9dfb4`,
     2: `932d7f`,
     3: `edec7e`,
-    4: `c720ad`
+    4: `c720ad`,
+    5: `614411`
   }
 }

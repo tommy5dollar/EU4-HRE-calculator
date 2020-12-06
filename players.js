@@ -1,7 +1,7 @@
 module.exports = {
   RTT: "Tommy",
   NZL: "Anton",
-  DUL: "Ben",
+  PER: "Ben",
   RUM: "Cillian",
   CYP: "Ian",
   SRV: "DanC",
@@ -25,5 +25,6 @@ module.exports = {
   TMB: "The Audacity of Cope",
   RAS: "adjb",
   NPL: "SamB",
-  MRK: "ybot22"
+  MRK: "ybot22",
+  OMA: `MintyFresh`
 }
