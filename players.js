@@ -17,7 +17,7 @@ module.exports = {
   BEN: "pilkman",
   TGT: "OllyN",
   TRE: "Sheb",
-  MCH: "Will",
+  RUS: "Will",
   KAF: "Piaggio",
   SKA: "Josh",
   LXA: "Solon",
@@ -26,5 +26,6 @@ module.exports = {
   RAS: "adjb",
   NPL: "SamB",
   MRK: "ybot22",
-  OMA: `MintyFresh`
+  OMA: `MintyFresh`,
+  MAM: `Pavel`
 }
