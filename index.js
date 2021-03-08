@@ -66,6 +66,10 @@ const processAllScores = async () => {
   return yaml.stringify({
     sessionNumber,
     skanderbegUrl,
+    summary: enhancedScoreData.reduce((acc, { playerName, tag, score, totalScore }, i) => ({
+      ...acc,
+      [`${i}. ${playerName} (${tag})`]: `${totalScore} ${score >= 0 ? `+` : ``}${score}`
+    }), {}),
     scores: enhancedScoreData.reduce((acc, { playerName, totalDev, euroDev, areaScore, score, totalScore, debug }) => ({
       ...acc,
       [playerName]: {
