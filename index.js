@@ -53,7 +53,15 @@ const processAllScores = async () => {
     totalScore: totalScores[playerName]
   }))
 
-  scoreData.sort(({ totalScore: totalScoreA, score: scoreA, totalDev: totalDevA }, { totalScore: totalScoreB, score: scoreB, totalDev: totalDevB }) => totalScoreB > totalScoreA ? 1 : scoreB > scoreA ? 1 : scoreB < scoreA ? -1 : totalDevB > totalDevA ? 1 : -1)
+  enhancedScoreData.sort(({ totalScore: totalScoreA, score: scoreA, euroDev: euroDevA, totalDev: totalDevA }, { totalScore: totalScoreB, score: scoreB, euroDev: euroDevB, totalDev: totalDevB }) =>
+    totalScoreB > totalScoreA ? 1 :
+      totalScoreB < totalScoreA ? -1 :
+        scoreB > scoreA ? 1 :
+          scoreB < scoreA ? -1 :
+            euroDevB > euroDevA ? 1 :
+              euroDevB < euroDevA ? -1 :
+                totalDevB > totalDevA ? 1 :
+                  -1)
 
   return yaml.stringify({
     sessionNumber,
@@ -142,7 +150,7 @@ const processScore = async (skanderbegId, sessionNumber) => {
       score: areaScore * sessionNumber,
       debug: Object.entries(scoresByArea).reduce((acc, [name, { debug }]) => ({...acc, [name]: debug}), {})
     }
-  }).sort(({ score: scoreA, totalDev: totalDevA }, { score: scoreB, totalDev: totalDevB }) => scoreB > scoreA ? 1 : scoreB < scoreA ? -1 : totalDevB > totalDevA ? 1 : -1)
+  })
 
   return {
     sessionNumber,
