@@ -7,6 +7,12 @@ const yaml = require(`json-to-pretty-yaml`)
 const saveMap = require(`./saveMap`)
 const players = require(`./players`)
 
+const fullProvinceList = require(`./fullProvinceList`)
+const euroAreas = require(`./euroAreas`)
+
+const euroProvinceListByProvinceId = fullProvinceList.reduce((acc, {ID, Area}) => euroAreas.includes(Area) ? { ...acc, [ID]: Area } : acc, {})
+const euroProvinceListByAreaName = fullProvinceList.reduce((acc, {ID, Area}) => euroAreas.includes(Area) ? ({...acc, [Area]: [...(acc[Area] || []), ID]}) : acc, {})
+
 const processAllScores = async () => {
   const { apiKey, saves } = saveMap
 
@@ -77,7 +83,7 @@ const processScore = async (skanderbegId, sessionNumber) => {
     subjectTags: diplomacy.dependency.filter(({ first, start_date, end_date }) => first === playerTag && (!start_date || start_date <= currentDate) && (!end_date || end_date > currentDate)).map(({ second }) => second)
   }))
 
-  const euroProvinceData = Object.entries(provinces).filter(([ id ], i) => euroProvinces.includes(parseInt(id.split(`-`).join(``), 10))).map(([, province]) => province)
+  const euroProvinceData = Object.entries(provinces).filter(([ id ], i) => Object.keys(euroProvinceListByProvinceId).includes(parseInt(id.split(`-`).join(``), 10))).map(([, province]) => province)
   const hreProvinces = Object.values(provinces).filter(({ hre }) => hre && !!hre)
 
   const scoreData = playersNations.map(({ playerName, nationTag, subjectTags }) => {
