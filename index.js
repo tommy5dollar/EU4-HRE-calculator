@@ -8,10 +8,10 @@ const saveMap = require(`./saveMap`)
 const players = require(`./players`)
 
 const fullProvinceList = require(`./fullProvinceList`)
-const euroAreas = require(`./euroAreas`)
 
-const euroProvinceListByProvinceId = fullProvinceList.reduce((acc, {ID, Area}) => euroAreas.includes(Area) ? { ...acc, [ID]: Area } : acc, {})
-const euroProvinceListByAreaName = fullProvinceList.reduce((acc, {ID, Area}) => euroAreas.includes(Area) ? ({...acc, [Area]: [...(acc[Area] || []), ID]}) : acc, {})
+const showDebug = true
+
+const excludeRegionList = [`Anatolia`, `Caucasia`, `Ural`]
 
 const processAllScores = async () => {
   const { apiKey, saves } = saveMap
@@ -52,13 +52,15 @@ const processAllScores = async () => {
   return yaml.stringify({
     sessionNumber,
     skanderbegUrl,
-    scores: Object.values(scoreData).reduce((acc, { playerName, scorableDev, totalDev, score }) => ({
+    scores: Object.values(scoreData).reduce((acc, { playerName, totalDev, euroDev, areaScore, score, debug }) => ({
       ...acc,
       [playerName]: {
-        scorableDev,
-        sessionScore: score,
         totalDev,
-        totalScore: totalScores[playerName]
+        euroDev,
+        areaScore,
+        sessionScore: score,
+        totalScore: totalScores[playerName],
+        debug: showDebug ? debug : null
       }
     }), {})
   })
@@ -77,42 +79,62 @@ const processScore = async (skanderbegId, sessionNumber) => {
   const gamestateParsed = jomini.parse(fixedGamestateString)
   const { provinces, diplomacy } = gamestateParsed
 
+  const enhancedProvinceData = Object.entries(provinces).map(([id, province]) => ({
+    id: parseInt(id.split(`-`).join(``)),
+    geography: fullProvinceList.find(({ ID }) => ID === parseInt(id.split(`-`).join(``))),
+    ...province
+  }))
+
+  const euroProvinceData = enhancedProvinceData.filter(({ geography: { Continent, Region } = {} }) => Continent === `Europe` && !excludeRegionList.includes(Region))
+
   const playersNations = Object.entries(players).map(([playerTag, playerName]) => ({
     playerName,
     nationTag: playerTag,
     subjectTags: diplomacy.dependency.filter(({ first, start_date, end_date }) => first === playerTag && (!start_date || start_date <= currentDate) && (!end_date || end_date > currentDate)).map(({ second }) => second)
   }))
 
-  const euroProvinceData = Object.entries(provinces).filter(([ id ], i) => Object.keys(euroProvinceListByProvinceId).includes(id.split(`-`).join(``))).map(([, province]) => province)
-  const hreProvinces = Object.values(provinces).filter(({ hre }) => hre && !!hre)
-
   const scoreData = playersNations.map(({ playerName, nationTag, subjectTags }) => {
-    const scorableDev = euroProvinceData.filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
-      + euroProvinceData.filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
-      + hreProvinces.filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
-      + hreProvinces.filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
+    const ownedEuroProvinces = euroProvinceData.filter(({owner}) => owner === nationTag || subjectTags.includes(owner))
+
+    const euroDev = ownedEuroProvinces.reduce(sumScoreReducer, 0) + ownedEuroProvinces.filter(({hre}) => hre && !!hre).reduce(sumScoreReducer, 0)
+
+    const ownedEuroProvincesByArea = ownedEuroProvinces.reduce((acc, { geography: { Area }, ...rest }) => ({
+      ...acc,
+      [Area]: [...(acc[Area] || []), rest]
+    }), {})
+
+    const scoresByArea = Object.entries(ownedEuroProvincesByArea).reduce((acc, [Area, ownedProvinces]) => {
+      const unownedProvinces = euroProvinceData.filter(({geography: { Area: innerArea }, owner}) => Area === innerArea && owner !== nationTag && !subjectTags.includes(owner))
+
+      const percentageOfAreaOwned = ownedProvinces.length / (ownedProvinces.length + unownedProvinces.length)
+
+      const ownedProvincesDev = ownedProvinces.reduce(sumScoreReducer, 0)
+      const unownedProvincesDev = unownedProvinces.reduce(sumScoreReducer, 0)
+
+      const score = percentageOfAreaOwned >= 1 ? ownedProvincesDev : percentageOfAreaOwned < 0.5 ? unownedProvincesDev * -1 : 0
+      acc[Area] = {
+        score,
+        debug: {
+          percentageOwned: percentageOfAreaOwned * 100,
+          ownedDev: ownedProvincesDev,
+          unownedDev: unownedProvincesDev,
+          score
+        }
+      }
+
+      return acc
+    }, {})
+
+    const areaScore = Object.values(scoresByArea).map(({ score }) => score).reduce((acc, score) => acc + score, 0)
 
     return {
       playerName,
       tag: nationTag,
-      euroDev: scorableDev,
-      totalDev: Object.values(provinces).filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
-        + Object.values(provinces).filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0),
-      score: scorableDev * sessionNumber,
-      debug: {
-        owned: euroProvinceData.filter(({owner}) => owner === nationTag).map(({name, base_tax, base_production, base_manpower}) => ({
-          name,
-          base_tax,
-          base_production,
-          base_manpower
-        })),
-        subjects: euroProvinceData.filter(({owner}) => subjectTags.includes(owner)).map(({name, base_tax, base_production, base_manpower}) => ({
-          name,
-          base_tax,
-          base_production,
-          base_manpower
-        }))
-      }
+      totalDev: Object.values(provinces).filter(({owner}) => owner === nationTag || subjectTags.includes(owner)).reduce(sumScoreReducer, 0),
+      euroDev,
+      areaScore,
+      score: areaScore * sessionNumber,
+      debug: Object.entries(scoresByArea).reduce((acc, [name, { debug }]) => ({...acc, [name]: debug}), {})
     }
   }).sort(({ score: scoreA, totalDev: totalDevA }, { score: scoreB, totalDev: totalDevB }) => scoreB > scoreA ? 1 : scoreB < scoreA ? -1 : totalDevB > totalDevA ? 1 : -1)
 
@@ -123,6 +145,8 @@ const processScore = async (skanderbegId, sessionNumber) => {
     scoreData
   }
 }
+
+const sumScoreReducer = (acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower
 
 const fetchSaveFromSkanderbeg = async (apiKey, saveId) => {
   console.log(`Fetching ${saveId}`)
