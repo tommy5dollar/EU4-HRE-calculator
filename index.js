@@ -52,7 +52,7 @@ const processAllScores = async () => {
   return yaml.stringify({
     sessionNumber,
     skanderbegUrl,
-    scores: Object.values(scoreData).reduce((acc, { playerName, tag, scorableDev, totalDev, score }) => ({
+    scores: Object.values(scoreData).reduce((acc, { playerName, scorableDev, totalDev, score }) => ({
       ...acc,
       [playerName]: {
         scorableDev,
@@ -83,7 +83,7 @@ const processScore = async (skanderbegId, sessionNumber) => {
     subjectTags: diplomacy.dependency.filter(({ first, start_date, end_date }) => first === playerTag && (!start_date || start_date <= currentDate) && (!end_date || end_date > currentDate)).map(({ second }) => second)
   }))
 
-  const euroProvinceData = Object.entries(provinces).filter(([ id ], i) => Object.keys(euroProvinceListByProvinceId).includes(parseInt(id.split(`-`).join(``), 10))).map(([, province]) => province)
+  const euroProvinceData = Object.entries(provinces).filter(([ id ], i) => Object.keys(euroProvinceListByProvinceId).includes(id.split(`-`).join(``))).map(([, province]) => province)
   const hreProvinces = Object.values(provinces).filter(({ hre }) => hre && !!hre)
 
   const scoreData = playersNations.map(({ playerName, nationTag, subjectTags }) => {
@@ -95,7 +95,7 @@ const processScore = async (skanderbegId, sessionNumber) => {
     return {
       playerName,
       tag: nationTag,
-      scorableDev,
+      euroDev: scorableDev,
       totalDev: Object.values(provinces).filter(({owner}) => owner === nationTag).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0)
         + Object.values(provinces).filter(({owner}) => subjectTags.includes(owner)).reduce((acc2, {base_tax, base_production, base_manpower}) => acc2 + base_tax + base_production + base_manpower, 0),
       score: scorableDev * sessionNumber,
