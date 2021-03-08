@@ -6,7 +6,6 @@ const yaml = require(`json-to-pretty-yaml`)
 
 const saveMap = require(`./saveMap`)
 const players = require(`./players`)
-const euroProvinces = require(`./euroProvinces`)
 
 const processAllScores = async () => {
   const { apiKey, saves } = saveMap
