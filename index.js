@@ -78,7 +78,7 @@ const processAllScores = async () => {
         areaScore,
         sessionScore: score,
         totalScore,
-        debug: showDebug ? debug : null
+        debug: showDebug ? Object.entries(debug).reduce((acc, [area, { score }]) => ({...acc, [area]: score}), {}): null
       }
     }), {})
   })
